@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private Button start;
+    [SerializeField] private Button infiniblaster;
+
+    [SerializeField] private Button platformer;
     [SerializeField] private Button openCredits;
     [SerializeField] private Button closeCredits;
     [SerializeField] private GameObject creditsUI;
@@ -13,7 +15,8 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         creditsUI.SetActive(false);
-        start.onClick.AddListener(() => LoadingScreen.LoadScene("Lab1"));
+        infiniblaster.onClick.AddListener(() => LoadingScreen.LoadScene("Lab1"));
+        platformer.onClick.AddListener(() => LoadingScreen.LoadScene("Lab3"));
         openCredits.onClick.AddListener(() => creditsUI.SetActive(true));
         closeCredits.onClick.AddListener(() => creditsUI.SetActive(false));
 
