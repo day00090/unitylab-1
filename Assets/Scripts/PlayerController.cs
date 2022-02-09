@@ -16,19 +16,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Left keys
         if(Input.GetKey(KeyCode.A))
         {
             mainSpriteRenderer.flipX = false;
             mainRigidbody.AddForce(new Vector2(-moveSpeed * Time.deltaTime, 0));
         }
+
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            mainSpriteRenderer.flipX = false;
+            mainRigidbody.AddForce(new Vector2(-moveSpeed * Time.deltaTime, 0));
+        }
         
+        //Right keys
         if(Input.GetKey(KeyCode.D))
         {
             mainSpriteRenderer.flipX = true;
             mainRigidbody.AddForce(new Vector2(+moveSpeed * Time.deltaTime, 0));
         }
 
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            mainSpriteRenderer.flipX = true;
+            mainRigidbody.AddForce(new Vector2(+moveSpeed * Time.deltaTime, 0));
+        }
+        
+        //Jump keys
         if(Input.GetKeyDown(KeyCode.W))
+        {
+            mainRigidbody.AddForce(new Vector2(0, 50));
+        }
+
+        if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             mainRigidbody.AddForce(new Vector2(0, 50));
         }
