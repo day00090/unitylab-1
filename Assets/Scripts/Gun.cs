@@ -26,4 +26,8 @@ public class Gun: MonoBehaviour
         GameObject newBullet = Instantiate(bulletPrefab);
         newBullet.transform.SetPositionAndRotation(shootPosititon.position, shootPosititon.rotation);
     }
+    void Reload()
+    {
+        
+    }
 }
