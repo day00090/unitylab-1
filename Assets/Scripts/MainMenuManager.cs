@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         creditsUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
         infiniblaster.onClick.AddListener(() => LoadingScreen.LoadScene("Lab1"));
         platformer.onClick.AddListener(() => LoadingScreen.LoadScene("Lab3"));
         spawner.onClick.AddListener(() => LoadingScreen.LoadScene("Lab4"));

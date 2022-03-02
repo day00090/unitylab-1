@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun: MonoBehaviour
 {
     [SerializeField] private Transform gunTransform;
-    [SerializeField] private Transform shootPosititon;
+    [SerializeField] private Transform shootPosition;
     [Range(0, 200)]
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject[] bullets;
@@ -24,7 +24,7 @@ public class Gun: MonoBehaviour
     {
         GameObject bulletPrefab = bullets[Random.Range(0, bullets.Length)];
         GameObject newBullet = Instantiate(bulletPrefab);
-        newBullet.transform.SetPositionAndRotation(shootPosititon.position, shootPosititon.rotation);
+        newBullet.transform.SetPositionAndRotation(shootPosition.position, shootPosition.rotation);
     }
     void Reload()
     {
