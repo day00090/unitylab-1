@@ -11,6 +11,7 @@ public class FPSEnemy : MonoBehaviour
         Vector3 playerPos = FPSPlayer.instance.transform.position;
         mainTransform.LookAt(playerPos);
         Vector3 currentRotation = mainTransform.rotation.eulerAngles;
+        currentRotation.x = 0;
         mainTransform.eulerAngles = currentRotation;
         Vector3 directionToPlayer = (playerPos - mainTransform.position).normalized;
         mainTransform.position += (directionToPlayer * moveSpeed * Time.deltaTime).SetY(0);

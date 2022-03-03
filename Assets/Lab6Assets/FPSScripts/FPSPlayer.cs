@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FPSPlayer : MonoBehaviour
 {
     [SerializeField] private Transform shootPosition;
     [Range(0, 200)]
     [SerializeField] private GameObject[] bullets;
-    private int bulletCount;
+    private int bulletCount = 8;
+    [SerializeField] private TMP_Text bulletCounter;
     [SerializeField] private AudioSource firingSound;
     [SerializeField] private FPSUI fpsUI;
     [SerializeField] private int maxHealth;
@@ -33,18 +35,25 @@ public class FPSPlayer : MonoBehaviour
     }
 
     void Fire() {
-        if(bulletCount < 8) {
+        if(bulletCount > 0) {
             GameObject bulletPrefab = bullets[Random.Range(0, bullets.Length)];
             GameObject newBullet = Instantiate(bulletPrefab);
             newBullet.transform.SetPositionAndRotation(shootPosition.position, shootPosition.rotation);
+            bulletCount--;
+            if(bulletCount >= 1) {
+                bulletCounter.text = "Bullets: " + bulletCount;
+            }
+            else {
+                bulletCounter.text = "Reload!";
+            }
             firingSound.Play();
-            bulletCount++;
         }
     }
 
     void Reload() {
-        if(bulletCount != 0) {
-            bulletCount = 0;
+        if(bulletCount == 0) {
+            bulletCount = 8;
+            bulletCounter.text = "Bullets: " + bulletCount;
         }
     }
 
@@ -70,7 +79,7 @@ public class FPSPlayer : MonoBehaviour
             health = value;
             fpsUI.ShowHealthFraction((float)Health / (float)maxHealth);
             if(health <= 0) {
-                LoadingScreen.LoadScene("MainMenu");
+                LoadingScreen.LoadScene("Lab2");
             }
         }
     }

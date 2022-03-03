@@ -11,6 +11,6 @@ public class FPSUI : MonoBehaviour {
     }
 
     public void ShowEnemyDefeatCount(int count) {
-        enemyDefeatText.text = "Enemies Defeated: " + count;
+        enemyDefeatText.text = "Enemies Slain: " + count;
     }
 }
