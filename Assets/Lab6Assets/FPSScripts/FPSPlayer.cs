@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class FPSPlayer : MonoBehaviour
 {
@@ -10,8 +8,10 @@ public class FPSPlayer : MonoBehaviour
     [Range(0, 200)]
     [SerializeField] private GameObject[] bullets;
     private int bulletCount;
+    [SerializeField] private AudioSource firingSound;
     [SerializeField] private FPSUI fpsUI;
     [SerializeField] private int maxHealth;
+    [SerializeField] private Transform head;
 
     //Here, we define an instance of the player:
     public static FPSPlayer instance;
@@ -37,10 +37,8 @@ public class FPSPlayer : MonoBehaviour
             GameObject bulletPrefab = bullets[Random.Range(0, bullets.Length)];
             GameObject newBullet = Instantiate(bulletPrefab);
             newBullet.transform.SetPositionAndRotation(shootPosition.position, shootPosition.rotation);
+            firingSound.Play();
             bulletCount++;
-            if (Ammo > 0) {
-                Ammo--;
-            }
         }
     }
 
